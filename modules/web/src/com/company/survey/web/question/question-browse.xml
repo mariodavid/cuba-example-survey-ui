@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.survey.web.question.QuestionBrowse"
+        focusComponent="questionsTable"
+        lookupComponent="questionsTable"
+        messagesPack="com.company.survey.web.question">
+    <dsContext>
+        <collectionDatasource id="questionsDs"
+                              class="com.company.survey.entity.reference.Question"
+                              view="question-view">
+            <query>
+                <![CDATA[select e from survey$Question e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="questionsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="questionsTable"
+                datasource="questionsDs">
+            <properties include=".*"/>
+        </filter>
+        <table id="questionsTable"
+               width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="questionText"/>
+            </columns>
+            <rows datasource="questionsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="questionsTable.create"/>
+                <button id="editBtn"
+                        action="questionsTable.edit"/>
+                <button id="removeBtn"
+                        action="questionsTable.remove"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>

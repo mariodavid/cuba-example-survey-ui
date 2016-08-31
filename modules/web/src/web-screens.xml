@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<screen-config xmlns="http://schemas.haulmont.com/cuba/screens.xsd">
+    <include file="/screens.xml"/>
+    <screen id="survey$Question.edit"
+            template="com/company/survey/web/question/question-edit.xml"/>
+    <screen id="survey$PossibleAnswer.edit"
+            template="com/company/survey/web/reference/possibleanswer/possible-answer-edit.xml"/>
+    <screen id="survey$Question.browse"
+            template="com/company/survey/web/question/question-browse.xml"/>
+    <screen id="survey$Survey.browse"
+            template="com/company/survey/web/reference/survey/survey-browse.xml"/>
+    <screen id="survey$Survey.edit"
+            template="com/company/survey/web/reference/survey/survey-edit.xml"/>
+    <screen id="survey$FilledSurvey.browse"
+            template="com/company/survey/web/survey/filledsurvey/filled-survey-browse.xml"/>
+    <screen id="survey$FilledSurvey.edit"
+            template="com/company/survey/web/survey/filledsurvey/filled-survey-edit.xml"/>
+</screen-config>

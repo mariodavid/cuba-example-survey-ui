@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editCaption"
+        class="com.company.survey.web.reference.possibleanswer.PossibleAnswerEdit"
+        datasource="possibleAnswerDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.survey.web.reference.possibleanswer">
+    <dsContext>
+        <datasource id="possibleAnswerDs"
+                    class="com.company.survey.entity.reference.PossibleAnswer"
+                    view="possibleAnswer-view"/>
+    </dsContext>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="possibleAnswerDs">
+            <column width="250px">
+                <field id="code"/>
+                <field id="answerText"/>
+                <field id="question"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

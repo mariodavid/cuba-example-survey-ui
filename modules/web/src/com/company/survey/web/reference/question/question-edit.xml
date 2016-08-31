@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editCaption"
+        class="com.company.survey.web.reference.question.QuestionEdit"
+        datasource="questionDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.survey.web.reference.question">
+    <dsContext>
+        <datasource id="questionDs"
+                    class="com.company.survey.entity.reference.Question"
+                    view="question-view">
+            <collectionDatasource id="possibleAnswersDs"
+                                  property="possibleAnswers"/>
+        </datasource>
+    </dsContext>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="questionDs">
+            <column width="250px">
+                <field id="questionText"/>
+            </column>
+        </fieldGroup>
+        <groupBox id="possibleAnswersBox"
+                  caption="msg://com.company.survey.entity.reference/Question.possibleAnswers">
+            <table id="possibleAnswersTable"
+                   height="200px"
+                   width="100%">
+                <actions>
+                    <action id="create"/>
+                    <action id="edit"/>
+                    <action id="remove"/>
+                </actions>
+                <columns>
+                    <column id="answerText"/>
+                </columns>
+                <rows datasource="possibleAnswersDs"/>
+                <buttonsPanel>
+                    <button action="possibleAnswersTable.create"/>
+                    <button action="possibleAnswersTable.edit"/>
+                    <button action="possibleAnswersTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

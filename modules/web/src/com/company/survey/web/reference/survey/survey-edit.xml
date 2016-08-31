@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editCaption"
+        class="com.company.survey.web.reference.survey.SurveyEdit"
+        datasource="surveyDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.survey.web.reference.survey">
+    <dsContext>
+        <datasource id="surveyDs"
+                    class="com.company.survey.entity.reference.Survey"
+                    view="survey-view">
+            <collectionDatasource id="questionsDs"
+                                  property="questions"/>
+        </datasource>
+    </dsContext>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="surveyDs">
+            <column width="250px">
+                <field id="title"/>
+            </column>
+        </fieldGroup>
+        <groupBox id="questionsBox"
+                  caption="msg://com.company.survey.entity.reference/Survey.questions">
+            <table id="questionsTable"
+                   height="200px"
+                   width="100%">
+                <actions>
+                    <action id="add"/>
+                    <action id="remove"/>
+                </actions>
+                <columns>
+                    <column id="questionText"/>
+                    <column id="possibleAnswers"/>
+                </columns>
+                <rows datasource="questionsDs"/>
+                <buttonsPanel>
+                    <button action="questionsTable.add"/>
+                    <button action="questionsTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

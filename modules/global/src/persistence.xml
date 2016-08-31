@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             version="2.0">
+    <persistence-unit name="cuba-example-survey-ui"
+                      transaction-type="RESOURCE_LOCAL">
+        <class>com.company.survey.entity.reference.Question</class>
+        <class>com.company.survey.entity.reference.PossibleAnswer</class>
+        <class>com.company.survey.entity.reference.Survey</class>
+        <class>com.company.survey.entity.survey.FilledSurvey</class>
+        <class>com.company.survey.entity.survey.Answer</class>
+    </persistence-unit>
+</persistence>

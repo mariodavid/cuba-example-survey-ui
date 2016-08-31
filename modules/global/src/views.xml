@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+    <view class="com.company.survey.entity.reference.PossibleAnswer"
+          extends="_local"
+          name="possibleAnswer-view">
+        <property name="question"
+                  view="_minimal"/>
+    </view>
+    <view class="com.company.survey.entity.survey.Answer"
+          extends="_local"
+          name="answer-view">
+        <property name="question"
+                  view="_minimal"/>
+        <property name="answer"
+                  view="_minimal"/>
+        <property name="filledSurvey"
+                  view="_minimal"/>
+    </view>
+    <view class="com.company.survey.entity.reference.Question"
+          extends="_local"
+          name="question-view">
+        <property name="possibleAnswers"
+                  view="_minimal"/>
+    </view>
+    <view class="com.company.survey.entity.reference.Survey"
+          extends="_local"
+          name="survey-view">
+        <property name="questions"
+                  view="question-view"/>
+    </view>
+    <view class="com.company.survey.entity.survey.FilledSurvey"
+          extends="_local"
+          name="filledSurvey-view">
+        <property name="survey"
+                  view="survey-view"/>
+        <property name="user"
+                  view="_minimal"/>
+        <property name="answers"
+                  view="_minimal"/>
+    </view>
+</views>

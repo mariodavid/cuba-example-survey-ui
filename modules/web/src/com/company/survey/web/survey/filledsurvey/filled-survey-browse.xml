@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.survey.web.survey.filledsurvey.FilledSurveyBrowse"
+        focusComponent="filledSurveysTable"
+        lookupComponent="filledSurveysTable"
+        messagesPack="com.company.survey.web.survey.filledsurvey">
+    <dsContext>
+        <collectionDatasource id="filledSurveysDs"
+                              class="com.company.survey.entity.survey.FilledSurvey"
+                              view="filledSurvey-view">
+            <query>
+                <![CDATA[select e from survey$FilledSurvey e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="filledSurveysTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="filledSurveysTable"
+                datasource="filledSurveysDs">
+            <properties include=".*"/>
+        </filter>
+        <table id="filledSurveysTable"
+               width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="survey"/>
+                <column id="filledDate"/>
+                <column id="user"/>
+            </columns>
+            <rows datasource="filledSurveysDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="filledSurveysTable.create"/>
+                <button id="editBtn"
+                        action="filledSurveysTable.edit"/>
+                <button id="removeBtn"
+                        action="filledSurveysTable.remove"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>
