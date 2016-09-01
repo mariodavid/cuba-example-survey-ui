@@ -6,7 +6,7 @@
         <property name="question"
                   view="_minimal"/>
     </view>
-    <view class="com.company.survey.entity.survey.Answer"
+    <view class="com.company.survey.entity.survey.SelectedAnswer"
           extends="_local"
           name="answer-view">
         <property name="question"

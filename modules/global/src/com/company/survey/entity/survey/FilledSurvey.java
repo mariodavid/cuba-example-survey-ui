@@ -45,15 +45,16 @@ public class FilledSurvey extends StandardEntity {
     @Composition
     @OnDelete(DeletePolicy.CASCADE)
     @OneToMany(mappedBy = "filledSurvey")
-    protected Set<Answer> answers;
+    protected Set<SelectedAnswer> answers;
 
-    public void setAnswers(Set<Answer> answers) {
+    public Set<SelectedAnswer> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(Set<SelectedAnswer> answers) {
         this.answers = answers;
     }
 
-    public Set<Answer> getAnswers() {
-        return answers;
-    }
 
 
     public void setUser(User user) {

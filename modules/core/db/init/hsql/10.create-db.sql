@@ -66,8 +66,16 @@ create table SURVEY_FILLED_SURVEY (
     primary key (ID)
 )^
 -- end SURVEY_FILLED_SURVEY
--- begin SURVEY_ANSWER
-create table SURVEY_ANSWER (
+
+-- begin SURVEY_SURVEY_QUESTION_LINK
+create table SURVEY_SURVEY_QUESTION_LINK (
+    SURVEY_ID varchar(36) not null,
+    QUESTION_ID varchar(36) not null,
+    primary key (SURVEY_ID, QUESTION_ID)
+)^
+-- end SURVEY_SURVEY_QUESTION_LINK
+-- begin SURVEY_SELECTED_ANSWER
+create table SURVEY_SELECTED_ANSWER (
     ID varchar(36) not null,
     CREATE_TS timestamp,
     CREATED_BY varchar(50),
@@ -83,11 +91,4 @@ create table SURVEY_ANSWER (
     --
     primary key (ID)
 )^
--- end SURVEY_ANSWER
--- begin SURVEY_SURVEY_QUESTION_LINK
-create table SURVEY_SURVEY_QUESTION_LINK (
-    SURVEY_ID varchar(36) not null,
-    QUESTION_ID varchar(36) not null,
-    primary key (SURVEY_ID, QUESTION_ID)
-)^
--- end SURVEY_SURVEY_QUESTION_LINK
+-- end SURVEY_SELECTED_ANSWER

@@ -16,9 +16,9 @@ import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.chile.core.annotations.NamePattern;
 
 @NamePattern("%s: %s|question,answer")
-@Table(name = "SURVEY_ANSWER")
-@Entity(name = "survey$Answer")
-public class Answer extends StandardEntity {
+@Table(name = "SURVEY_SELECTED_ANSWER")
+@Entity(name = "survey$SelectedAnswer")
+public class SelectedAnswer extends StandardEntity {
     private static final long serialVersionUID = 125328975667934747L;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

@@ -7,6 +7,6 @@
         <class>com.company.survey.entity.reference.PossibleAnswer</class>
         <class>com.company.survey.entity.reference.Survey</class>
         <class>com.company.survey.entity.survey.FilledSurvey</class>
-        <class>com.company.survey.entity.survey.Answer</class>
+        <class>com.company.survey.entity.survey.SelectedAnswer</class>
     </persistence-unit>
 </persistence>

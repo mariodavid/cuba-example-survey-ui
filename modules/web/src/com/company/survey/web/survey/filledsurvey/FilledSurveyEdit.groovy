@@ -1,24 +1,17 @@
 package com.company.survey.web.survey.filledsurvey
 
-import com.company.survey.entity.reference.PossibleAnswer;
+import com.company.survey.entity.reference.PossibleAnswer
 import com.company.survey.entity.reference.Survey
-import com.company.survey.entity.survey.Answer
-import com.haulmont.cuba.core.global.Metadata;
-import com.haulmont.cuba.gui.components.AbstractEditor;
-import com.company.survey.entity.survey.FilledSurvey;
-import com.haulmont.cuba.gui.components.Component
-import com.haulmont.cuba.gui.components.Frame
-import com.haulmont.cuba.gui.components.LookupPickerField;
-import com.haulmont.cuba.gui.components.PickerField
-import com.haulmont.cuba.gui.components.Table
+import com.company.survey.entity.survey.FilledSurvey
+import com.company.survey.entity.survey.SelectedAnswer
+import com.haulmont.cuba.core.global.Metadata
+import com.haulmont.cuba.gui.components.*
 import com.haulmont.cuba.gui.data.CollectionDatasource
-import com.haulmont.cuba.gui.xml.layout.ComponentsFactory;
-import com.haulmont.cuba.security.global.UserSession;
+import com.haulmont.cuba.gui.xml.layout.ComponentsFactory
+import com.haulmont.cuba.security.global.UserSession
 
-import javax.inject.Inject;
-import javax.inject.Named;
-import java.util.Date;
-import java.util.Map;
+import javax.inject.Inject
+import javax.inject.Named
 
 public class FilledSurveyEdit extends AbstractEditor<FilledSurvey> {
 
@@ -30,7 +23,7 @@ public class FilledSurveyEdit extends AbstractEditor<FilledSurvey> {
     PickerField survey;
 
     @Inject
-    CollectionDatasource<Answer, UUID> answersDs
+    CollectionDatasource<SelectedAnswer, UUID> answersDs
 
     @Inject
     CollectionDatasource<PossibleAnswer, UUID> questionsPossibleAnswersDs
@@ -66,7 +59,7 @@ public class FilledSurveyEdit extends AbstractEditor<FilledSurvey> {
                 Survey survey = (Survey) e.getValue();
 
                 survey.questions.each {
-                    Answer answer = metadata.create(Answer.class)
+                    SelectedAnswer answer = metadata.create(SelectedAnswer.class)
                     answer.question = it
                     answer.filledSurvey = filledSurvey
 
@@ -86,10 +79,10 @@ public class FilledSurveyEdit extends AbstractEditor<FilledSurvey> {
 
 
 
-        answersTable.addGeneratedColumn("filteredAnswer", new Table.ColumnGenerator<Answer>() {
+        answersTable.addGeneratedColumn("filteredAnswer", new Table.ColumnGenerator<SelectedAnswer>() {
 
             @Override
-            Component generateCell(Answer entity) {
+            Component generateCell(SelectedAnswer entity) {
 
                 LookupPickerField field = componentsFactory.createComponent(LookupPickerField.NAME);
 
