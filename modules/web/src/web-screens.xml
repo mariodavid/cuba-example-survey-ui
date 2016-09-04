@@ -15,4 +15,6 @@
             template="com/company/survey/web/survey/filledsurvey/filled-survey-browse.xml"/>
     <screen id="survey$FilledSurvey.edit"
             template="com/company/survey/web/survey/filledsurvey/filled-survey-edit.xml"/>
+    <screen id="survey$FilledSurveyOptionsGroup.edit"
+            template="com/company/survey/web/survey/filledsurvey/filled-survey-options-group-edit.xml"/>
 </screen-config>

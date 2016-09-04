@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  ~ TODO Copyright
+  -->
+
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editCaption"
+        class="com.company.survey.web.survey.filledsurvey.FilledSurveyOptionGroupsEdit"
+        datasource="filledSurveyDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.survey.web.survey.filledsurvey">
+    <dsContext>
+        <datasource id="filledSurveyDs"
+                    class="com.company.survey.entity.survey.FilledSurvey"
+                    view="filledSurvey-view">
+            <collectionDatasource id="answersDs"
+                                  property="answers">
+            </collectionDatasource>
+        </datasource>
+        <collectionDatasource id="possibleAnswersDs"
+                              allowCommit="false"
+                              class="com.company.survey.entity.reference.PossibleAnswer"
+                              view="_minimal">
+            <query>
+                <![CDATA[select e from survey$PossibleAnswer e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="filledSurveyDs">
+            <column width="250px">
+                <field id="survey"/>
+                <field id="filledDate"
+                       editable="false"/>
+                <field id="user"
+                       editable="false"/>
+            </column>
+        </fieldGroup>
+        <groupBox id="answersBox"
+                  caption="msg://com.company.survey.entity.survey/FilledSurvey.answers">
+            <table id="answersTable"
+                   editable="true"
+                   height="200px"
+                   width="100%">
+                <columns>
+                    <column id="question"/>
+                </columns>
+                <rows datasource="answersDs"/>
+            </table>
+        </groupBox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

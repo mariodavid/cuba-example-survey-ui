@@ -1,3 +1,7 @@
+/*
+ * TODO Copyright
+ */
+
 package com.company.survey.web.survey.filledsurvey
 
 import com.company.survey.entity.reference.PossibleAnswer
@@ -15,7 +19,7 @@ import com.haulmont.cuba.security.global.UserSession
 import javax.inject.Inject
 import javax.inject.Named
 
-public class FilledSurveyEdit extends AbstractEditor<FilledSurvey> {
+public class FilledSurveyOptionGroupsEdit extends AbstractEditor<FilledSurvey> {
 
     @Inject
     UserSession userSession;
@@ -83,7 +87,8 @@ public class FilledSurveyEdit extends AbstractEditor<FilledSurvey> {
             @Override
             Component generateCell(SelectedAnswer entity) {
 
-                LookupPickerField field = componentsFactory.createComponent(LookupPickerField.NAME);
+                OptionsGroup field = componentsFactory.createComponent(OptionsGroup.NAME);
+                field.orientation = OptionsGroup.Orientation.HORIZONTAL
                 field.setDatasource(answersTable.getItemDatasource(entity), "answer")
                 CollectionDatasource optionsDs = new DsBuilder(getDsContext())
                         .setJavaClass(PossibleAnswer.class)

@@ -27,6 +27,10 @@
                 <action id="create"/>
                 <action id="edit"/>
                 <action id="remove"/>
+                <action id="editOptionsGroupAction"
+                        caption="Edit (Options Group)"
+                        invoke="editOptionsGroup"
+                        trackSelection="true"/>
             </actions>
             <columns>
                 <column id="survey"/>
@@ -41,6 +45,9 @@
                         action="filledSurveysTable.create"/>
                 <button id="editBtn"
                         action="filledSurveysTable.edit"/>
+                <button id="editOptionsGroupBtn"
+                        action="filledSurveysTable.editOptionsGroupAction"
+                        icon="icons/edit.png"/>
                 <button id="removeBtn"
                         action="filledSurveysTable.remove"/>
             </buttonsPanel>
