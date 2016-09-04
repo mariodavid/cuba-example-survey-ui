@@ -5,8 +5,10 @@ import com.company.survey.entity.reference.Survey
 import com.company.survey.entity.survey.FilledSurvey
 import com.company.survey.entity.survey.SelectedAnswer
 import com.haulmont.cuba.core.global.Metadata
+import com.haulmont.cuba.core.global.View
 import com.haulmont.cuba.gui.components.*
 import com.haulmont.cuba.gui.data.CollectionDatasource
+import com.haulmont.cuba.gui.data.DsBuilder
 import com.haulmont.cuba.gui.xml.layout.ComponentsFactory
 import com.haulmont.cuba.security.global.UserSession
 
@@ -35,9 +37,6 @@ public class FilledSurveyEdit extends AbstractEditor<FilledSurvey> {
 
     @Inject
     Table answersTable
-
-
-
 
 
     @Inject
@@ -85,18 +84,16 @@ public class FilledSurveyEdit extends AbstractEditor<FilledSurvey> {
             Component generateCell(SelectedAnswer entity) {
 
                 LookupPickerField field = componentsFactory.createComponent(LookupPickerField.NAME);
+                field.setDatasource(answersTable.getItemDatasource(entity), "answer")
+                CollectionDatasource optionsDs = new DsBuilder(getDsContext())
+                        .setJavaClass(PossibleAnswer.class)
+                        .setViewName(View.MINIMAL)
+                        .buildCollectionDatasource()
+                optionsDs.setQuery('select e from survey$PossibleAnswer e where e.question.id = :custom$question')
+                optionsDs.refresh(['question': entity.question])
 
-                /*
-                    All PossibleAnswers should be displayed that belong to this Question (entity.question)
-                */
-                field.setDatasource(answersTable.getItemDatasource(entity), "answer");
-                field.setOptionsDatasource(questionsPossibleAnswersDs);
+                field.setOptionsDatasource(optionsDs);
 
-                showNotification("${entity.question.possibleAnswers*.answerText.join(", ")}", Frame.NotificationType.TRAY)
-
-
-                field.addLookupAction();
-                field.addOpenAction();
                 return field;
             }
         })

@@ -11,9 +11,6 @@
                     view="filledSurvey-view">
             <collectionDatasource id="answersDs"
                                   property="answers">
-                <datasource id="questionsDs" property="question">
-                    <collectionDatasource id="questionsPossibleAnswersDs" property="possibleAnswers" />
-                </datasource>
             </collectionDatasource>
         </datasource>
         <collectionDatasource id="possibleAnswersDs"
@@ -43,23 +40,10 @@
                    editable="true"
                    height="200px"
                    width="100%">
-                <actions>
-                    <action id="create"/>
-                    <action id="edit"/>
-                    <action id="remove"/>
-                </actions>
                 <columns>
                     <column id="question"/>
-                    <column id="answer"
-                            editable="true"
-                            optionsDatasource="possibleAnswersDs"/>
                 </columns>
                 <rows datasource="answersDs"/>
-                <buttonsPanel>
-                    <button action="answersTable.create"/>
-                    <button action="answersTable.edit"/>
-                    <button action="answersTable.remove"/>
-                </buttonsPanel>
             </table>
         </groupBox>
         <frame id="windowActions"
