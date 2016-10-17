@@ -11,6 +11,8 @@ import com.haulmont.cuba.gui.data.CollectionDatasource
 import com.haulmont.cuba.gui.data.DsBuilder
 import com.haulmont.cuba.gui.xml.layout.ComponentsFactory
 import com.haulmont.cuba.security.global.UserSession
+import com.haulmont.cuba.web.gui.components.WebComponentsHelper
+import com.haulmont.cuba.web.gui.components.WebPickerField
 
 import javax.inject.Inject
 import javax.inject.Named
@@ -50,6 +52,7 @@ public class FilledSurveyEdit extends AbstractEditor<FilledSurvey> {
 
         item.answers = []
 
+        
         survey.addValueChangeListener(new Component.ValueChangeListener() {
             @Override
             public void valueChanged(Component.ValueChangeEvent e) {
