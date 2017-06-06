@@ -4,16 +4,17 @@
 
 package com.company.survey.entity.survey;
 
+import com.company.survey.entity.reference.PossibleAnswer;
+import com.company.survey.entity.reference.Question;
+import com.haulmont.chile.core.annotations.NamePattern;
+import com.haulmont.cuba.core.entity.StandardEntity;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
-import com.company.survey.entity.reference.PossibleAnswer;
-import com.company.survey.entity.reference.Question;
-import com.haulmont.cuba.core.entity.StandardEntity;
-import com.haulmont.chile.core.annotations.NamePattern;
+import javax.persistence.Table;
 
 @NamePattern("%s: %s|question,answer")
 @Table(name = "SURVEY_SELECTED_ANSWER")
@@ -32,6 +33,18 @@ public class SelectedAnswer extends StandardEntity {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "FILLED_SURVEY_ID")
     protected FilledSurvey filledSurvey;
+
+    @Column(name = "COMMENT_")
+    protected String comment;
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
 
     public void setQuestion(Question question) {
         this.question = question;

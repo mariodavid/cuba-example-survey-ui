@@ -1,15 +1,17 @@
 -- begin SURVEY_QUESTION
 create table SURVEY_QUESTION (
     ID varchar(36) not null,
+    VERSION integer not null,
     CREATE_TS timestamp,
     CREATED_BY varchar(50),
-    VERSION integer not null,
     UPDATE_TS timestamp,
     UPDATED_BY varchar(50),
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
     QUESTION_TEXT varchar(255),
+    DESCRIPTION longvarchar,
+    CATEGORY_ID varchar(36),
     --
     primary key (ID)
 )^
@@ -17,9 +19,9 @@ create table SURVEY_QUESTION (
 -- begin SURVEY_POSSIBLE_ANSWER
 create table SURVEY_POSSIBLE_ANSWER (
     ID varchar(36) not null,
+    VERSION integer not null,
     CREATE_TS timestamp,
     CREATED_BY varchar(50),
-    VERSION integer not null,
     UPDATE_TS timestamp,
     UPDATED_BY varchar(50),
     DELETE_TS timestamp,
@@ -28,6 +30,7 @@ create table SURVEY_POSSIBLE_ANSWER (
     CODE varchar(255),
     ANSWER_TEXT varchar(255),
     QUESTION_ID varchar(36) not null,
+    ACTIVE boolean,
     --
     primary key (ID)
 )^
@@ -88,7 +91,24 @@ create table SURVEY_SELECTED_ANSWER (
     QUESTION_ID varchar(36) not null,
     ANSWER_ID varchar(36) not null,
     FILLED_SURVEY_ID varchar(36) not null,
+    COMMENT_ varchar(255),
     --
     primary key (ID)
 )^
 -- end SURVEY_SELECTED_ANSWER
+-- begin SURVEY_QUESTION_CATEGORY
+create table SURVEY_QUESTION_CATEGORY (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    NAME varchar(255),
+    --
+    primary key (ID)
+)^
+-- end SURVEY_QUESTION_CATEGORY

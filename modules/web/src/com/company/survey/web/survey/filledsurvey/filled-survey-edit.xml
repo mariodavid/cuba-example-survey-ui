@@ -9,42 +9,45 @@
         <datasource id="filledSurveyDs"
                     class="com.company.survey.entity.survey.FilledSurvey"
                     view="filledSurvey-view">
-            <collectionDatasource id="answersDs"
+            <groupDatasource id="answersDs"
                                   property="answers">
-            </collectionDatasource>
+            </groupDatasource>
         </datasource>
-        <collectionDatasource id="possibleAnswersDs"
-                              allowCommit="false"
-                              class="com.company.survey.entity.reference.PossibleAnswer"
-                              view="_minimal">
-            <query>
-                <![CDATA[select e from survey$PossibleAnswer e]]>
-            </query>
-        </collectionDatasource>
     </dsContext>
-    <layout expand="windowActions"
+    <layout expand="answersBox"
             spacing="true">
         <fieldGroup id="fieldGroup"
                     datasource="filledSurveyDs">
             <column width="250px">
                 <field id="survey"/>
+            </column>
+            <column width="250px">
                 <field id="filledDate"
                        editable="false"/>
+            </column>
+            <column width="250px">
                 <field id="user"
                        editable="false"/>
             </column>
         </fieldGroup>
         <groupBox id="answersBox"
                   caption="msg://com.company.survey.entity.survey/FilledSurvey.answers">
-            <table id="answersTable"
+            <groupTable id="answersTable"
                    editable="true"
-                   height="200px"
+                        showSelection="false"
+                        stylename="no-vertical-lines no-stripes"
+
+                   height="100%"
                    width="100%">
                 <columns>
-                    <column id="question"/>
+                    <group>
+                        <column id="question.category" />
+                    </group>
+
+                    <column id="id" visible="false" />
                 </columns>
                 <rows datasource="answersDs"/>
-            </table>
+            </groupTable>
         </groupBox>
         <frame id="windowActions"
                screen="editWindowActions"/>

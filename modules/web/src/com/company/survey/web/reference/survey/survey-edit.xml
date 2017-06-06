@@ -33,6 +33,7 @@
                 <columns>
                     <column id="questionText"/>
                     <column id="possibleAnswers"/>
+                    <column id="category"/>
                 </columns>
                 <rows datasource="questionsDs"/>
                 <buttonsPanel>

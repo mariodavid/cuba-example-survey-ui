@@ -8,5 +8,6 @@
         <class>com.company.survey.entity.reference.Survey</class>
         <class>com.company.survey.entity.survey.FilledSurvey</class>
         <class>com.company.survey.entity.survey.SelectedAnswer</class>
+        <class>com.company.survey.entity.reference.QuestionCategory</class>
     </persistence-unit>
 </persistence>

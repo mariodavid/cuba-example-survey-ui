@@ -16,6 +16,10 @@ import com.haulmont.cuba.core.entity.annotation.OnDelete;
 import com.haulmont.cuba.core.global.DeletePolicy;
 import java.util.Set;
 import javax.persistence.OneToMany;
+import javax.persistence.Lob;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @NamePattern("%s|questionText")
 @Table(name = "SURVEY_QUESTION")
@@ -31,6 +35,32 @@ public class Question extends StandardEntity {
     @OnDelete(DeletePolicy.CASCADE)
     @OneToMany(mappedBy = "question")
     protected Set<PossibleAnswer> possibleAnswers;
+
+    @Lob
+    @Column(name = "DESCRIPTION")
+    protected String description;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CATEGORY_ID")
+    protected QuestionCategory category;
+
+    public void setCategory(QuestionCategory category) {
+        this.category = category;
+    }
+
+    public QuestionCategory getCategory() {
+        return category;
+    }
+
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
 
     public void setPossibleAnswers(Set<PossibleAnswer> possibleAnswers) {
         this.possibleAnswers = possibleAnswers;

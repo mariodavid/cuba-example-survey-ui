@@ -18,6 +18,7 @@
                 <field id="code"/>
                 <field id="answerText"/>
                 <field id="question"/>
+                <field id="active"/>
             </column>
         </fieldGroup>
         <frame id="windowActions"

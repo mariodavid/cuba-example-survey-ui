@@ -4,17 +4,17 @@
 
 package com.company.survey.entity.reference;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Column;
-
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import com.haulmont.chile.core.annotations.NamePattern;
+import javax.persistence.Table;
 
-@NamePattern("%s|answerText")
+@NamePattern("%s|code")
 @Table(name = "SURVEY_POSSIBLE_ANSWER")
 @Entity(name = "survey$PossibleAnswer")
 public class PossibleAnswer extends StandardEntity {
@@ -29,6 +29,18 @@ public class PossibleAnswer extends StandardEntity {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "QUESTION_ID")
     protected Question question;
+
+    @Column(name = "ACTIVE")
+    protected Boolean active;
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
 
     public void setQuestion(Question question) {
         this.question = question;

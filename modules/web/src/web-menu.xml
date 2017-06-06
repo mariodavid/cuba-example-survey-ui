@@ -8,5 +8,6 @@
           insertBefore="administration">
         <item id="survey$Question.browse"/>
         <item id="survey$Survey.browse"/>
+        <item id="survey$QuestionCategory.browse"/>
     </menu>
 </menu-config>

@@ -4,25 +4,25 @@
 
 package com.company.survey.entity.survey;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import java.util.Date;
+import com.company.survey.entity.reference.Survey;
+import com.haulmont.chile.core.annotations.Composition;
+import com.haulmont.chile.core.annotations.NamePattern;
+import com.haulmont.cuba.core.entity.StandardEntity;
+import com.haulmont.cuba.core.entity.annotation.OnDelete;
+import com.haulmont.cuba.core.global.DeletePolicy;
+import com.haulmont.cuba.security.entity.User;
+
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import com.company.survey.entity.reference.Survey;
-import com.haulmont.cuba.core.entity.StandardEntity;
-import com.haulmont.chile.core.annotations.NamePattern;
-import com.haulmont.cuba.security.entity.User;
-import com.haulmont.chile.core.annotations.Composition;
-import com.haulmont.cuba.core.entity.annotation.OnDelete;
-import com.haulmont.cuba.core.global.DeletePolicy;
+import java.util.Date;
 import java.util.Set;
-import javax.persistence.OneToMany;
 
 @NamePattern("%s (%s)|filledDate,survey")
 @Table(name = "SURVEY_FILLED_SURVEY")
@@ -46,6 +46,7 @@ public class FilledSurvey extends StandardEntity {
     @OnDelete(DeletePolicy.CASCADE)
     @OneToMany(mappedBy = "filledSurvey")
     protected Set<SelectedAnswer> answers;
+
 
     public Set<SelectedAnswer> getAnswers() {
         return answers;
